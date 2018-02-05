@@ -64,11 +64,12 @@ int handleOp(int clientSocFd) {
     printf("Client Connected \n");
     bzero(buffer,bufferSize);
     read(clientSocFd,buffer,bufferSize-1);
+    printf("%s",buffer);
     int a ,b;
     sscanf(buffer,"%d %d",&a,&b);
     printf("Number sent %d and %d \n",a,b);
     bzero(buffer,bufferSize);
-    sprintf(buffer,"%d",a+b);
+    sprintf(buffer,"%d",a*b);
     printf("On server result :: %s \n",buffer);    
     write(clientSocFd,buffer,strlen(buffer));
 }
