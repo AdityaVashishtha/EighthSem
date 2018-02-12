@@ -3,35 +3,60 @@
 #include<graphics.h>
 #include <math.h>
 
-int main()
-{
-    int x1,y1,x2,y2,i,dx,dy,count,stepSize=1,p0,pk,pk_1;
+void printLineBresenHam(int x1,int y1, int x2,int y2);
+
+int main() {
+    int x1,y1,x2,y2;
     printf("(Bresenham) Enter both the points \n");
-    scanf("%d%d%d%d",&x1,&y1,&x2,&y2);
-    dy = y1 - y2;
-    dx = x1 - x2;
-    p0 = 2*dy - dx;
-    count = dy>dx ? dy : dx ;
-    int gd = DETECT,gm;
-    initgraph(&gd, &gm, NULL);
-    setbkcolor(LIGHTGRAY);
-    pk = p0;
-    int x=x1 , y=y1;
-    while(x != x2 || y != y2) {
-        putpixel(x,y,RED);
-        //printf("%d %d",x,y);
-        x = x+1;
-        if(pk > 0) {
-            y = y +1;
-            pk_1 = pk + 2*dy - 2*dx;
-        }            
-        else {
-            pk_1 = pk + 2*dy;
-        }            
-        //putpixel(x,y,RED);
-        pk = pk_1;
-    }    
-    delay(5000);
-    closegraph();
+    scanf("%d%d%d%d",&x1,&y1,&x2,&y2);    
+    printLineBresenHam(x1,y1,x2,y2);
     return 0;
+}
+
+void printLineBresenHam(int x1,int y1, int x2,int y2) {
+    int i,dx,dy,count,stepSize=1,p0,pk,pk_1;
+    dy = abs(y1 - y2);
+    dx = abs(x1 - x2);
+    count = dy>dx?dy:dx;
+    float m = dy/(float)dx;
+    int c = m>1 ? 1 : 0;
+    int gd = DETECT,gm,x,y;
+    initgraph(&gd, &gm, NULL);
+    setbkcolor(WHITE);
+    switch(c) {
+        case 0: // m<1 case        
+            p0 = 2*dy - dx;            
+            pk = p0,x=x1,y=y1;
+            for(i=0;i<count;i++) {
+                putpixel(x,y,BLUE);        
+                x = x+1;
+                if(pk > 0) {
+                    y = y +1;
+                    pk_1 = pk + 2*dy - 2*dx;
+                }            
+                else {
+                    pk_1 = pk + 2*dy;
+                }                            
+                pk = pk_1;
+            }
+            break;
+        case 1: // m>1 case
+            p0 = 2*dx - dy;            
+            pk = p0,x=x1,y=y1;
+            for(i=0;i<count;i++) {
+                putpixel(x,y,GREEN);        
+                y = y+1;
+                if(pk > 0) {
+                    x = x +1;
+                    pk_1 = pk + 2*dx - 2*dy;
+                }            
+                else {
+                    pk_1 = pk + 2*dx;
+                }                            
+                pk = pk_1;
+            }
+            break;
+    }        
+    delay(1000);
+    closegraph();
 }
