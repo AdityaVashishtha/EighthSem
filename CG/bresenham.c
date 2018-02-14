@@ -57,6 +57,6 @@ void printLineBresenHam(int x1,int y1, int x2,int y2) {
             }
             break;
     }        
-    delay(1000);
+    delay(5000);
     closegraph();
 }
