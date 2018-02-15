@@ -17,17 +17,8 @@ int main() {
 
 void encrypt(char str[],char enStr[],int n) {
     int strLen = strlen(str),i,j,count=0;
-    // if(strLen%n != 0) {
-    //     for(i=strLen;i<(strLen+(strLen%n));i++){
-    //         //printf("new body");
-    //         str[i]=' ';
-    //     }
-    //     str[i] = '\0';
-    //     strLen = strLen+(strLen%n);
-    // }
     for(i=0;i<n;i++) {
         for(j=i;j<strLen;j += n) {
-            //printf("%c",str[j]);
             if(j> strLen)
                 break;
             enStr[count++]=str[j];
@@ -46,6 +37,5 @@ void decrypt(char enStr[],char decStr[],int n) {
         }            
     }    
     decStr[count++] = '\0';
-    //printf("\n");
     printf("Decrypted String : %s \n",decStr);
 }

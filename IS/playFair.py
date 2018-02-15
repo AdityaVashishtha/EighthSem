@@ -55,7 +55,7 @@ def encrypt(msg,key,keyMatrix):
 	new = []
 	for i in range(0,int(lenMsg/2)):
 		new.append(msg[i*mSize:i*mSize+mSize])
-	print new
+	#print new
 	for ch in new:		
 		index = key.index(ch[0])		
 		c1 = int(index/5),index%5
@@ -72,7 +72,7 @@ def decrypt(msg,key,keyMatrix):
 	new = []
 	for i in range(0,int(lenMsg/2)):
 		new.append(msg[i*mSize:i*mSize+mSize])
-	print new
+	#print new
 	for ch in new:		
 		index = key.index(ch[0])		
 		c1 = int(index/5),index%5
