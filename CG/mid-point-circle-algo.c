@@ -1,23 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <graphics.h>
-#include <math.h>
 
-void printCircleBresenHam(int x1, int y1, int r);
+void printMidPointCircle(int x1, int y1, int r);
 
 int main() {
     int x1, y1, r;
-    printf("(Bresenham) Enter Center points and radius \n");
+    printf("(Mid Point Circle) Enter Center points and radius \n");
     scanf("%d%d%d", &x1, &y1, &r);
-    printCircleBresenHam(x1, y1, r);
+    printMidPointCircle(x1, y1, r);
     return 0;
 }
 
-void printCircleBresenHam(int x1, int y1, int r) {
+void printMidPointCircle(int x1, int y1, int r) {
     printf("%d",r);
     int i, x, y, d;
-    // x1 += 320;
-    // y1 += 240;
     x=0,y=r;
     d = 1-r;
     int gd = DETECT,gm;

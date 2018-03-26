@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <graphics.h>
-#include <math.h>
 
 void printCircleBresenHam(int x1, int y1, int r);
 
