@@ -100,6 +100,7 @@ int main()
     if(transformation==3)
         line(0,240,640,240);
     line(xn1, yn1, xn2, yn2);
+    delay(5000);
     // getch();
     closegraph();
     return 0;

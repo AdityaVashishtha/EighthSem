@@ -23,6 +23,8 @@ void printMidPointLine(int x1,int y1, int x2,int y2) {
     int gd = DETECT,gm,x,y;
     initgraph(&gd, &gm, NULL);
     setbkcolor(WHITE);     
+    x=x1;
+    y=y1;
     if(!c) {
         for(i=0;i<count;i++) {
             putpixel(x,y,RED);

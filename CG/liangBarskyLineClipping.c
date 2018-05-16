@@ -49,41 +49,33 @@ void main() {
                 }
             }
         }
-    }
-    
+    }    
     t1=0;
-    t2=1;
-    
-    for(i=0;i<4;i++)
-    {
-        temp=q[i]/p[i];
-        
-        if(p[i]<0)
-        {
+    t2=1;    
+    for(i=0;i<4;i++) {
+        temp=q[i]/p[i];        
+        if(p[i]<0){
             if(t1<=temp)
                 t1=temp;
         }
-        else
-        {
-            if(t2>temp)
-                t2=temp;
-        }
-    }
-    
-    if(t1<t2)
-    {
+        else  {      
+          if(t2>temp)
+            t2=temp;     
+        }   
+    }    
+    if(t1<t2) {
         tx1 = x1 + t1 * p[1];
         tx2 = x1 + t2 * p[1];
         ty1 = y1 + t1 * p[3];
         ty2 = y1 + t2 * p[3];
-        //line(xx1,yy1,xx2,yy2);
+    } else {
+        printf("Line is completely outside \n");
     }
     
-    if(tx1!=x1 || tx2!=x2 || ty1 != y1 || ty2 != y2)
+    if((tx1!=x1 || tx2!=x2 || ty1 != y1 || ty2 != y2) && (t1<t2))
         printf("Line clipped at points :: \n\t X1=%d Y1=%d \n\t X2=%d Y2=%d \n",tx1,ty1,tx2,ty2);
     else 
         printf("Line not clipped \n");
-    
     
     int gd = DETECT,gm;
     initgraph(&gd, &gm, NULL);
@@ -94,9 +86,6 @@ void main() {
     line(x1,y1,x2,y2);
     setcolor(BLUE);
     line(tx1,ty1,tx2,ty2);
-    //line(tx1,ty1,tx2,ty2);        
-    delay(5000);
-    closegraph();
     delay(5000);
     closegraph();
 }
